@@ -1,0 +1,10 @@
+[
+  {
+    "img": "https://randomuser.me/api/portraits/lego/0.jpg",
+    "group": "Product"
+  },
+  {
+    "img": "https://randomuser.me/api/portraits/lego/5.jpg",
+    "group": "Engineering"
+  }
+]
