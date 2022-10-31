@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 import SharingFooter from "./SharingFooter"
-import SearchWindow from "./SearchWindow";
+
+// JSON DATA
 import JSONDATAPERSON from "../MOCK_DATA_PERSON.json";
 import JSONDATAGROUP from "../MOCK_DATA_GROUP.json";
 
@@ -12,9 +13,33 @@ const Widget = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const addPill = () => {
-    
+  const [personPill, setPersonPill] = useState("");
+
+  const [personToWidget, setPersonToWidget] = useState("");
+
+  const onClickAddPerson = () => {
+    setPersonToWidget(
+      <article className="content_section">
+      <div className="toggle_header">
+        <img src="https://randomuser.me/api/portraits/men/18.jpg" alt="avatar" className="avatar"/>
+        <div>
+          <header>Varun Bhabhra</header>
+          <p>varunbhabhra.com</p>
+        </div>
+      </div>
+      <Dropdown/>
+    </article>
+    )
   }
+  
+    const onClickAddPill = (val) => {
+      setPersonPill(
+        <div className="pill">
+          <span>{val.name}</span>
+          <i className="fa-solid fa-x"></i>
+        </div>
+      )
+    }
 
   return (
     <section id="widget_wrapper">
@@ -40,7 +65,7 @@ const Widget = () => {
         {/* Input */}
         <article className="input_section">
           <div className="input_btn_div">
-            <input type="search" placeholder="People, emails, groups"/>
+            <input type="search" placeholder="People, emails, groups" onChange={event => setSearchTerm(event.target.value)}/>
             <button className="invite_btn">Invite</button>
           </div>
         </article>
@@ -57,6 +82,7 @@ const Widget = () => {
 
           <Dropdown/>
         </article>
+        {personToWidget}
 
         {/* Sharing Footer */}
         <SharingFooter/>
@@ -66,12 +92,14 @@ const Widget = () => {
       {/* Search Window Input */}
       <article className="search_input_section">
         <div className="search_input_btn_div">
+          {personPill}    
           <input type="search" placeholder="Search people, emails or groups" onChange={event => setSearchTerm(event.target.value)}/>
           <Dropdown/>
-          <button className="invite_btn">Invite</button>
+          <button className="invite_btn" onClick={onClickAddPerson}>Invite</button>
         </div>
       </article>
 
+      {/* Person Section */}
       <section className="selection_section">
         <h3 className="select_person_heading">Select a person</h3>
         {JSONDATAPERSON.filter((val) => {
@@ -82,7 +110,7 @@ const Widget = () => {
           }
         }).map((val, key) => {
           return (
-            <div className="person" key={key}>
+            <div className="person" key={key} onClick={ () => onClickAddPill(val)}>
               <img src={val.img} alt="avatar"/>
               <div className="person_details">
                 <header>{val.name}</header>
@@ -92,7 +120,8 @@ const Widget = () => {
           )
         })}
       </section>
-
+        
+      {/* Group Section */}
       <section className="selection_section">
         <h3 className="select_person_heading">Select a group</h3>
         {JSONDATAGROUP.filter((val) => {

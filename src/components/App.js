@@ -1,6 +1,5 @@
 import React from "react";
 import Widget from "./Widget";
-import SearchWindow from "./SearchWindow";
 
 const App = () => {
 
@@ -16,7 +15,6 @@ const App = () => {
         <Widget/>
       </div>
 
-      {/* <SearchWindow/> */}
     </section>
   )
 };
