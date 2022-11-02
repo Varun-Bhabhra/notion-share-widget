@@ -29,6 +29,7 @@ body {
 
 .share_btn {
   width: 6rem;
+  margin: 2rem 0rem;
   padding: 0.6em 0;
   background-color: var(--dark);
   color: var(--light);
@@ -165,11 +166,25 @@ input:checked + .slider:before {
   justify-content: space-between;
 }
 
+.input_btn_div:hover {
+  border: 1px solid #6aa5ff;
+}
+
 .input_section input {
   border: none;
   border-radius: 5px;
   width: 25rem;
   padding-left: 12px;
+}
+
+.input_section .take_to_search {
+  border-radius: 5px;
+  width: 26rem;
+  padding-left: 12px;
+  padding-top: 6px;
+  text-decoration: none;
+  color: var(--darkgray);
+  cursor: pointer;
 }
 
 .input_section button {
@@ -298,7 +313,7 @@ select:focus {
   padding-left: 12px;
 }
 
-.search_input_section button {
+/* .search_input_section button {
   margin-left: 12px;
   width: 5rem;
   height: 2.3rem;
@@ -307,6 +322,20 @@ select:focus {
   border-radius: 6px;
   border-left: 1px solid var(--gray);
   cursor: pointer;
+} */
+
+.search_input_section .invite_btn {
+  margin-left: 12px;
+  padding: 6px 20px;
+  width: 5rem;
+  height: 2.3rem;
+  background-color: var(--light);
+  border: 1px solid var(--gray);
+  border-radius: 6px;
+  border-left: 1px solid var(--gray);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--darkgray);
 }
 
 input:focus {
